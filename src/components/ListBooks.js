@@ -1,26 +1,39 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Loading from "./Loading";
 
 const ListBooks = (props) => {
   const [books, setBooks] = useState(null);
+  const [categories, setCategories] = useState(null);
 
   useEffect(() => {
     // fetch("http://localhost:3004/books",{method:"get "});
     axios
       .get("http://localhost:3004/books")
-      .then((res) => {
-        console.log(res);
-        setBooks(res.data)
+      .then((resBook) => {
+        console.log(resBook);
+        setBooks(resBook.data);
+        axios
+          .get("http://localhost:3004/categories")
+          .then((resCat) => {
+            console.log(resCat);
+            setTimeout(()=>{
+                setCategories(resCat.data);
+
+            },3000)
+          })
+          .catch((errCat) => console.log("Categories catch blog", errCat));
       })
-      .catch((err) => console.log("catch blog",err));
+
+      .catch((errBook) => console.log("Book catch blog", errBook));
   }, []);
 
-  if(books ===null){
-    return(
-        <div>
-            <h1>LOADING...</h1>
-        </div>
-    )
+  if (books === null || categories === null) {
+    return (
+ 
+        <Loading/>
+  
+    );
   }
 
   return (
@@ -29,30 +42,26 @@ const ListBooks = (props) => {
         <thead>
           <tr>
             <th scope="col">Book Name</th>
-            <th scope="col">Author</th>            
+            <th scope="col">Author</th>
             <th scope="col">Category</th>
             <th scope="col">ISBN</th>
-
           </tr>
         </thead>
         <tbody>
-            {
-                books.map((book)=>{
-                    
-                    return(
-                        <tr>
-                        <td>{book.name}</td>
-                        <td>{book.author}</td>
-                        <td>Kategory</td>
-                        <td>{book.isbn}</td>
-                      </tr>
-                    
-                    );
-                })
-            }
-         
-    
-     
+          {books.map((book) => {
+            const category = categories.find(
+              (cat) => cat.id === book.categoryId
+            );
+
+            return (
+              <tr>
+                <td>{book.name}</td>
+                <td>{book.author}</td>
+                <td>{category.name}</td>
+                <td>{book.isbn}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
