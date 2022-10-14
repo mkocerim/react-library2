@@ -1,77 +1,20 @@
 {
-  "books": [
-    {
-      "id": 1,
-      "name": "Yaban",
-      "author": "Yakup Kadri Karaosmanoğlu",
-      "isbn": "1111111111",
-      "categoryId": "1"
-    },
-    {
-      "id": 2,
-      "name": "Yeraltindan Notlar",
-      "author": "DostaViski",
-      "isbn": "1111111112",
-      "categoryId": "2"
-    },
-    {
-      "id": 2,
-      "name": "Denemeler",
-      "author": "Montaigne",
-      "isbn": "1111111113",
-      "categoryId": "3"
-    },
-    {
-      "id": 4,
-      "name": "Insan Ne ile Yasar ?",
-      "author": "Tolstoy",
-      "isbn": "1111111114",
-      "categoryId": "4"
-    },
-    {
-      "id": 1665763669916,
-      "name": "Ak Zambaklar Ülkesinde",
-      "author": "Grigoriy Petrov",
-      "isbn": "1111111115",
-      "categoryId": "2"
-    },
-    {
-      "id": 1665764377936,
-      "name": "Vatan Yahut Silistre",
-      "author": "Namik Kemal",
-      "isbn": "111111231",
-      "categoryId": "1"
-    },
-    {
-      "id": 1665764874817,
-      "name": "Ates Gecesi",
-      "author": "Resat Nuri Gültekin",
-      "isbn": "1111122233",
-      "categoryId": "1"
-    },
-    {
-      "id": 1665764942524,
-      "name": "Sineklerin Tanrisi",
-      "author": "William Golding",
-      "isbn": "",
-      "categoryId": "1"
-    }
-  ],
+  "books": [],
   "categories": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Novel"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Story"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Essay"
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Religion"
     }
   ]

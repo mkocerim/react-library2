@@ -30,13 +30,14 @@ const AddBookForm = (props) => {
       if(bookname==="" || author==="" || category===""){
        
         alert("Bookname, Author and Category can't be empty ")
+        return;
       }
       const newBook={
         id:new Date().getTime(),
         name:bookname,
         author:author,
-        isbn:isbn,
-        categoryId:category
+        isbn:Number(isbn),
+        categoryId:Number(category)
       
       };
 
