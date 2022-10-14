@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
+import { Link } from "react-router-dom";
 
 const ListBooks = (props) => {
   const [books, setBooks] = useState(null);
@@ -20,7 +21,7 @@ const ListBooks = (props) => {
             setTimeout(()=>{
                 setCategories(resCat.data);
 
-            },3000)
+            },1000)
           })
           .catch((errCat) => console.log("Categories catch blog", errCat));
       })
@@ -29,15 +30,14 @@ const ListBooks = (props) => {
   }, []);
 
   if (books === null || categories === null) {
-    return (
- 
-        <Loading/>
-  
-    );
+    return <Loading/>;
   }
 
   return (
     <div className="container my-5">
+      <div className="my-3 d-flex justify-content-end">
+        <Link to ="/add-book" className="btn btn-primary">AddBook</Link>
+       </div>
       <table className="table">
         <thead>
           <tr>
