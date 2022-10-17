@@ -23,6 +23,7 @@ const AddBookForm = (props) => {
 
   const handleSubmit=(event)=>{
         event.preventDefault()
+      
         // console.log("name",bookname)
         // console.log("author",author)
         // console.log("ISBN", isbn)
@@ -36,8 +37,8 @@ const AddBookForm = (props) => {
         id:new Date().getTime(),
         name:bookname,
         author:author,
-        isbn:Number(isbn),
-        categoryId:Number(category)
+        isbn:parseInt(isbn),
+        categoryId:category
       
       };
 
@@ -98,7 +99,7 @@ const AddBookForm = (props) => {
             >
               <option value={""} selected>Category Select</option>
               {categories.map((cat) => {
-                return <option value={cat.id}>{cat.name}</option>;
+                return <option key={cat.id} value={cat.id}>{cat.name}</option>;
               })}
             </select>
           </div>

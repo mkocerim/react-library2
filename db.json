@@ -1,20 +1,49 @@
 {
-  "books": [],
+  "books": [
+    {
+      "id": 1665998431383,
+      "name": "Yaban",
+      "author": "Yakup Kadri",
+      "categoryId": "1",
+      "isbn": "1413253"
+    },
+    {
+      "id": 1665999548535,
+      "name": "Suc ve Ceza",
+      "author": "Dostoyevski",
+      "categoryId": "4",
+      "isbn": "1111355"
+    },
+    {
+      "id": 1665999728377,
+      "name": "Savaş ve Barış",
+      "author": "Tolstoy",
+      "categoryId": "1",
+      "isbn": "4556966"
+    },
+    {
+      "id": 1665999832635,
+      "name": "Ateş Gecesi",
+      "author": "Reşat Nuri",
+      "categoryId": "2",
+      "isbn": ""
+    }
+  ],
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Novel"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Story"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Essay"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Religion"
     }
   ]
