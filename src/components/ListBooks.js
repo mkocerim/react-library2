@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
+import Modal from "../components/Modal";
 
 const ListBooks = (props) => {
   const [books, setBooks] = useState(null);
   const [categories, setCategories] = useState(null);
   const [didUpdate, setDidUpdate] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [silinecekKitap, setSilinecekKitap] = useState(null);
 
   useEffect(() => {
     // fetch("http://localhost:3004/books",{method:"get "});
@@ -36,6 +39,7 @@ const ListBooks = (props) => {
       .then((res) => {
         console.log(res);
         setDidUpdate(!didUpdate);
+        setShowModal(false);
       })
       .catch((err) => console.log(err));
   };
@@ -80,7 +84,10 @@ const ListBooks = (props) => {
                 <td>
                   <div className="btn-group" role="group">
                     <button
-                      onClick={() => deleteBook(book.id)}
+                      onClick={() => {
+                        setShowModal(true);
+                        setSilinecekKitap(book.id);
+                      }}
                       type="button"
                       className="btn btn-outline-danger btn-sm "
                     >
@@ -91,9 +98,7 @@ const ListBooks = (props) => {
                       className="btn btn-outline-secondary mx-1"
                     >
                       Edit
-                    
                     </Link>
-
                   </div>
                 </td>
               </tr>
@@ -101,6 +106,12 @@ const ListBooks = (props) => {
           })}
         </tbody>
       </table>
+      {showModal === true && (
+        <Modal
+          yapilmasiGerekenIs={() => deleteBook(silinecekKitap)}
+          setShowModal={setShowModal}
+        />
+      )}
     </div>
   );
 };
