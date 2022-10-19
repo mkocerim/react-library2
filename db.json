@@ -5,7 +5,7 @@
       "name": "Yaban",
       "author": "Yakup Kadri",
       "categoryId": "1",
-      "isbn": "1413253"
+      "isbn": "1413253444"
     },
     {
       "id": 1665999548535,
@@ -15,11 +15,32 @@
       "isbn": "1111355"
     },
     {
-      "id": 1665999728377,
-      "name": "Savaş ve Barış",
-      "author": "Tolstoy",
-      "categoryId": "1",
-      "isbn": "4556966"
+      "id": 1666084039227,
+      "name": "Yeraltından Notlar",
+      "author": "Dostoyevski",
+      "categoryId": "2",
+      "isbn": 1111223311
+    },
+    {
+      "id": 1666160404357,
+      "name": "fdffd",
+      "author": "dfdsf",
+      "categoryId": "4",
+      "isbn": 1233566
+    },
+    {
+      "id": 1666161346089,
+      "name": "Sineklerin Tanrısı",
+      "author": "William Golding",
+      "isbn": 12345563211,
+      "categoryId": "4"
+    },
+    {
+      "id": 1666161377504,
+      "name": "Yeraltında Notlar",
+      "author": "Dostoyevski",
+      "isbn": null,
+      "categoryId": "2"
     }
   ],
   "categories": [

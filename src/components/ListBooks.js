@@ -10,7 +10,7 @@ const ListBooks = (props) => {
   const [didUpdate, setDidUpdate] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [silinecekKitap, setSilinecekKitap] = useState(null);
-
+  const [silinecekKitapIsmi, setSilinecekKitapIsmi] = useState("");
   useEffect(() => {
     // fetch("http://localhost:3004/books",{method:"get "});
     axios
@@ -87,6 +87,7 @@ const ListBooks = (props) => {
                       onClick={() => {
                         setShowModal(true);
                         setSilinecekKitap(book.id);
+                        setSilinecekKitapIsmi(book.name);
                       }}
                       type="button"
                       className="btn btn-outline-danger btn-sm "
@@ -108,8 +109,12 @@ const ListBooks = (props) => {
       </table>
       {showModal === true && (
         <Modal
-          yapilmasiGerekenIs={() => deleteBook(silinecekKitap)}
-          setShowModal={setShowModal}
+          expl={`"${silinecekKitapIsmi}"are you  sure to delete ?`}
+          title={silinecekKitapIsmi}
+          onConfirm={() => deleteBook(silinecekKitap)}
+          onCancel={() => {
+            setShowModal(false);
+          }}
         />
       )}
     </div>

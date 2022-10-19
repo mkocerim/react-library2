@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Modal = (props) => {
-  const { setShowModal, yapilmasiGerekenIs } = props;
+  const { onCancel, onConfirm, expl, title } = props;
   return (
-    <div
+    <button
+      onClick={onCancel}
       style={{
         position: "absolute",
         top: 0,
@@ -14,6 +15,7 @@ const Modal = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        cursor: "default",
       }}
       className="container"
     >
@@ -25,23 +27,24 @@ const Modal = (props) => {
           borderRadius: "5px",
         }}
       >
-        <h1>Modal</h1>
+        <h1 className="text-center">{title}</h1>
+        <p className="text-center">{expl}</p>
         <div className="d-flex justify-content-center">
           <button
-            onClick={() => setShowModal(false)}
+            onClick={onCancel}
             className="btn btn-outline-danger btn-sm mx-2"
           >
             Cancel
           </button>
           <button
-            onClick={yapilmasiGerekenIs}
+            onClick={onConfirm}
             className="btn btn-outline-success btn-sm mx-2"
           >
             Confirm
           </button>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

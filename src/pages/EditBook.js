@@ -3,30 +3,28 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../components/Loading";
+import Modal from "../components/Modal";
 
 const EditBook = (props) => {
   const [bookname, setBookname] = useState("");
   const [author, setAuthor] = useState("");
-  const [isbn,setIsbn] = useState("");
+  const [isbn, setIsbn] = useState("");
   const [category, setCategory] = useState("");
   const [categories, setCategories] = useState(null);
-
+  const [showModal, setShowModal] = useState(false);
   const params = useParams();
-  console.log("params",params);
-  const navigate=useNavigate();
+  console.log("params", params);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`http://localhost:3004/books/${params.bookId}`)
       .then((res) => {
-        console.log("res.data",res.data);
+        console.log("res.data", res.data);
         setBookname(res.data.name);
         setAuthor(res.data.author);
-        setCategory(res.data.categoryId)
-        setIsbn(res.data.isbn)
-       
-      
-       
+        setCategory(res.data.categoryId);
+        setIsbn(res.data.isbn);
 
         axios
           .get("http://localhost:3004/categories")
@@ -34,7 +32,7 @@ const EditBook = (props) => {
             setCategories(res.data);
           })
           .catch((err) => {
-            console.log("cateories error",err);
+            console.log("cateories error", err);
           });
       })
       .catch((err) => {
@@ -44,36 +42,38 @@ const EditBook = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(bookname === "" || author === "" || category === ""){
-      alert("Book's name, author or category can't be empty")
-      return;
-    }
-    const updatedBook={
-      id:params.bookId,
-      name:bookname,
-      author:author,
-      categoryId:category,
-      isbn:isbn,
-    }
-    console.log("updatedBook",updatedBook);
-
-    axios.put(`http://localhost:3004/books/${params.bookId}`,updatedBook)
-    .then((res)=>{
-        console.log(res)
-        navigate("/");
-    }).catch((err)=>{
-      console.log("edit error", err)
-    })
-    
+    setShowModal(true);
   };
 
-  if(categories===null){
-   
-    return <Loading/>
+  const editBook = () => {
+    if (bookname === "" || author === "" || category === "") {
+      alert("Book's name, author or category can't be empty");
+      return;
+    }
+    const updatedBook = {
+      id: params.bookId,
+      name: bookname,
+      author: author,
+      categoryId: category,
+      isbn: isbn,
+    };
+    console.log("updatedBook", updatedBook);
 
+    axios
+      .put(`http://localhost:3004/books/${params.bookId}`, updatedBook)
+      .then((res) => {
+        console.log(res);
+        setShowModal(false);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log("edit error", err);
+      });
+  };
+
+  if (categories === null) {
+    return <Loading />;
   }
-
-
 
   return (
     <div>
@@ -116,11 +116,13 @@ const EditBook = (props) => {
                 value={category}
                 onChange={(event) => setCategory(event.target.value)}
               >
-                <option value={""} >
-                  Category Select
-                </option>
+                <option value={""}>Category Select</option>
                 {categories.map((cat) => {
-                  return <option key={cat.id} value={cat.id}>{cat.name}</option>;
+                  return (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.name}
+                    </option>
+                  );
                 })}
               </select>
             </div>
@@ -134,7 +136,15 @@ const EditBook = (props) => {
             </button>
           </div>
         </form>
-      </div>{" "}
+      </div>
+      {showModal === true && (
+        <Modal
+          title={`"${bookname}" named book will update`}
+          expl="Confirm to save"
+          onCancel={() => setShowModal(false)}
+          onConfirm={() => editBook()}
+        />
+      )}
     </div>
   );
 };
