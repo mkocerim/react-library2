@@ -3,8 +3,14 @@ import axios from "axios";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
 import Modal from "../components/Modal";
+import { useSelector } from "react-redux";
 
 const ListBooks = (props) => {
+
+  const uygulamaninGenelStatei=useSelector((state)=>state);
+  console.log(uygulamaninGenelStatei)
+
+
   const [books, setBooks] = useState(null);
   const [categories, setCategories] = useState(null);
   const [didUpdate, setDidUpdate] = useState(false);
@@ -79,7 +85,7 @@ const ListBooks = (props) => {
                 <td>{book.author}</td>
                 <td>{category.name}</td>
                 <td className="text-center">
-                  {book.isbn === "" ? "-" : book.isbn}
+                  {book.isbn === "" ?  "--" : book.isbn}
                 </td>
                 <td>
                   <div className="btn-group" role="group">
