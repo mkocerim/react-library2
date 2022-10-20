@@ -4,13 +4,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../components/Loading";
 import Modal from "../components/Modal";
+import { useSelector } from "react-redux";
 
 const EditBook = (props) => {
+  const { categoriesState } = useSelector((state) => state);
   const [bookname, setBookname] = useState("");
   const [author, setAuthor] = useState("");
   const [isbn, setIsbn] = useState("");
   const [category, setCategory] = useState("");
-  const [categories, setCategories] = useState(null);
+  // const [categories, setCategories] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const params = useParams();
   console.log("params", params);
@@ -26,14 +28,14 @@ const EditBook = (props) => {
         setCategory(res.data.categoryId);
         setIsbn(res.data.isbn);
 
-        axios
-          .get("http://localhost:3004/categories")
-          .then((res) => {
-            setCategories(res.data);
-          })
-          .catch((err) => {
-            console.log("cateories error", err);
-          });
+        // axios
+        //   .get("http://localhost:3004/categories")
+        //   .then((res) => {
+        //     setCategories(res.data);
+        //   })
+        //   .catch((err) => {
+        //     console.log("cateories error", err);
+        //   });
       })
       .catch((err) => {
         console.log(err);
@@ -71,7 +73,7 @@ const EditBook = (props) => {
       });
   };
 
-  if (categories === null) {
+  if (categoriesState.success !== true) {
     return <Loading />;
   }
 
@@ -117,7 +119,7 @@ const EditBook = (props) => {
                 onChange={(event) => setCategory(event.target.value)}
               >
                 <option value={""}>Category Select</option>
-                {categories.map((cat) => {
+                {categoriesState.categories.map((cat) => {
                   return (
                     <option key={cat.id} value={cat.id}>
                       {cat.name}

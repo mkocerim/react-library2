@@ -6,13 +6,11 @@ import Modal from "../components/Modal";
 import { useSelector } from "react-redux";
 
 const ListBooks = (props) => {
-
-  const uygulamaninGenelStatei=useSelector((state)=>state);
-  console.log(uygulamaninGenelStatei)
-
+  const { categoriesState } = useSelector((state) => state);
+  console.log(categoriesState);
 
   const [books, setBooks] = useState(null);
-  const [categories, setCategories] = useState(null);
+  // const [categories, setCategories] = useState(null);
   const [didUpdate, setDidUpdate] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [silinecekKitap, setSilinecekKitap] = useState(null);
@@ -24,15 +22,16 @@ const ListBooks = (props) => {
       .then((resBook) => {
         console.log(resBook);
         setBooks(resBook.data);
-        axios
-          .get("http://localhost:3004/categories")
-          .then((resCat) => {
-            console.log(resCat);
-            setTimeout(() => {
-              setCategories(resCat.data);
-            }, 1000);
-          })
-          .catch((errCat) => console.log("Categories catch blog", errCat));
+        //   axios
+        //     .get("http://localhost:3004/categories")
+        //     .then((resCat) => {
+        //       console.log(resCat);
+        //       setTimeout(() => {
+        //         setCategories(resCat.data);
+        //       }, 1000);
+        //     })
+        //     .catch((errCat) => console.log("Categories catch blog", errCat));
+        //
       })
 
       .catch((errBook) => console.log("Book catch blog", errBook));
@@ -50,7 +49,7 @@ const ListBooks = (props) => {
       .catch((err) => console.log(err));
   };
 
-  if (books === null || categories === null) {
+  if (books === null || categoriesState.success !== true) {
     return <Loading />;
   }
 
@@ -75,7 +74,7 @@ const ListBooks = (props) => {
         </thead>
         <tbody>
           {books.map((book) => {
-            const category = categories.find(
+            const category = categoriesState.categories.find(
               (cat) => cat.id === book.categoryId
             );
 
@@ -85,7 +84,7 @@ const ListBooks = (props) => {
                 <td>{book.author}</td>
                 <td>{category.name}</td>
                 <td className="text-center">
-                  {book.isbn === "" ?  "--" : book.isbn}
+                  {book.isbn === "" ? "--" : book.isbn}
                 </td>
                 <td>
                   <div className="btn-group" role="group">

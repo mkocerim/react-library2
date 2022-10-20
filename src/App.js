@@ -4,16 +4,26 @@ import Home from "./pages/Home";
 import AddBook from "./pages/AddBook";
 import EditBook from "./pages/EditBook";
 
-import{useDispatch} from "react-redux"
+import { useDispatch } from "react-redux";
+import axios from "axios";
 
 function App() {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
 
-  useEffect(()=>{
-
-    dispatch({type:"FETCH_CATEGORIES_START"});
-
-  },[])
+  useEffect(() => {
+    dispatch({ type: "FETCH_CATEGORIES_START" });
+    axios
+      .get(" http://localhost:3004/categories")
+      .then((res) => {
+        dispatch({ type: "FETCH_CATEGORIES_SUCCESS", payload: res.data });
+      })
+      .catch((err) => {
+        dispatch({
+          type: "FETCH_CATEGORIES_FAIL",
+          payload: "There is an error when cateories pulled ",
+        });
+      });
+  }, []);
   return (
     <BrowserRouter>
       <Routes>

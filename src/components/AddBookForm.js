@@ -1,60 +1,62 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const AddBookForm = (props) => {
-  const navigate =useNavigate()
-  const [categories, setCategories] = useState(null);
+  const { categoriesState } = useSelector((state) => state);
+  console.log("AddBookForm categoriesState", categoriesState);
+  const navigate = useNavigate();
+  // const [categories, setCategories] = useState(null);
   const [bookname, setBookname] = useState("");
   const [author, setAuthor] = useState("");
   const [isbn, setIsbn] = useState("");
   const [category, setCategory] = useState("");
-  
-  useEffect(() => {
+
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:3004/categories")
+  //     .then((res) => {
+  //       console.log(res);
+  //       setCategories(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // console.log("name",bookname)
+    // console.log("author",author)
+    // console.log("ISBN", isbn)
+    // console.log("Category",category)
+    if (bookname === "" || author === "" || category === "") {
+      alert("Bookname, Author and Category can't be empty ");
+      return;
+    }
+    const newBook = {
+      id: new Date().getTime(),
+      name: bookname,
+      author: author,
+      isbn: parseInt(isbn),
+      categoryId: category,
+    };
+
     axios
-      .get("http://localhost:3004/categories")
+      .post("http://localhost:3004/books", newBook)
       .then((res) => {
-        console.log(res);
-        setCategories(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  const handleSubmit=(event)=>{
-        event.preventDefault()
-      
-        // console.log("name",bookname)
-        // console.log("author",author)
-        // console.log("ISBN", isbn)
-        // console.log("Category",category)
-      if(bookname==="" || author==="" || category===""){
-       
-        alert("Bookname, Author and Category can't be empty ")
-        return;
-      }
-      const newBook={
-        id:new Date().getTime(),
-        name:bookname,
-        author:author,
-        isbn:parseInt(isbn),
-        categoryId:category
-      
-      };
-
-      axios.post("http://localhost:3004/books",newBook)
-      .then((res)=>{
-            console.log("Book add response",res);
-            setBookname("")
-            setAuthor("")
-            setIsbn("")
-            setCategory("")
+        console.log("Book add response", res);
+        setBookname("");
+        setAuthor("");
+        setIsbn("");
+        setCategory("");
         navigate("/");
       })
-      .catch(err=>console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
-  if (categories === null) {
+  if (categoriesState.success !== true) {
     return <Loading />;
   }
 
@@ -97,15 +99,21 @@ const AddBookForm = (props) => {
               value={category}
               onChange={(event) => setCategory(event.target.value)}
             >
-              <option value={""} selected>Category Select</option>
-              {categories.map((cat) => {
-                return <option key={cat.id} value={cat.id}>{cat.name}</option>;
+              <option value={""} selected>
+                Category Select
+              </option>
+              {categoriesState.categories.map((cat) => {
+                return (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.name}
+                  </option>
+                );
               })}
             </select>
           </div>
         </div>
         <div className="d-flex justify-content-end">
-          <button type="submit" className="btn btn-primary w-50 ">          
+          <button type="submit" className="btn btn-primary w-50 ">
             Save
           </button>
         </div>
