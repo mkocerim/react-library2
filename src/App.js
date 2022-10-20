@@ -9,13 +9,15 @@ import axios from "axios";
 
 function App() {
   const dispatch = useDispatch();
-
+//categories
   useEffect(() => {
     dispatch({ type: "FETCH_CATEGORIES_START" });
     axios
       .get(" http://localhost:3004/categories")
       .then((res) => {
-        dispatch({ type: "FETCH_CATEGORIES_SUCCESS", payload: res.data });
+        dispatch({ 
+          type: "FETCH_CATEGORIES_SUCCESS", 
+          payload: res.data });
       })
       .catch((err) => {
         dispatch({
@@ -23,7 +25,22 @@ function App() {
           payload: "There is an error when cateories pulled ",
         });
       });
-  }, []);
+      //books
+      dispatch({type:"FETCH_BOOKS_START"});
+      axios.get("http://localhost:3004/books")
+      .then(res=>{
+        dispatch({
+          type:"FETCH_BOOKS_SUCCESS",
+          payload:res.data
+        })
+        .catch((err)=>{
+          dispatch({
+            type:"FETCH_BOOKS_FAIL",
+            payload:"There is an error when books pulled",
+          })
+        })
+      })
+  },[]);
   return (
     <BrowserRouter>
       <Routes>

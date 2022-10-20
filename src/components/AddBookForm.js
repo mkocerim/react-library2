@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 
 const AddBookForm = (props) => {
+  const dispatch=useDispatch()
   const { categoriesState } = useSelector((state) => state);
   console.log("AddBookForm categoriesState", categoriesState);
   const navigate = useNavigate();
@@ -47,6 +48,7 @@ const AddBookForm = (props) => {
       .post("http://localhost:3004/books", newBook)
       .then((res) => {
         console.log("Book add response", res);
+        dispatch({type:"ADD_BOOK",payload:newBook });
         setBookname("");
         setAuthor("");
         setIsbn("");
