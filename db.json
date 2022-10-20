@@ -22,13 +22,6 @@
       "isbn": 1111223311
     },
     {
-      "id": 1666160404357,
-      "name": "fdffd",
-      "author": "dfdsf",
-      "categoryId": "4",
-      "isbn": 1233566
-    },
-    {
       "id": 1666161346089,
       "name": "Sineklerin Tanrısı",
       "author": "William Golding",
@@ -39,8 +32,8 @@
       "id": 1666161377504,
       "name": "Yeraltında Notlar",
       "author": "Dostoyevski",
-      "isbn": null,
-      "categoryId": "2"
+      "categoryId": "2",
+      "isbn": null
     }
   ],
   "categories": [
