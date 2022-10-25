@@ -4,10 +4,13 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../components/Loading";
 import Modal from "../components/Modal";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const EditBook = (props) => {
-  const { categoriesState } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { categoriesState, booksState } = useSelector((state) => state);
+  console.log("categoriesState", categoriesState);
+  console.log("booksState", booksState);
   const [bookname, setBookname] = useState("");
   const [author, setAuthor] = useState("");
   const [isbn, setIsbn] = useState("");
@@ -19,28 +22,42 @@ const EditBook = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3004/books/${params.bookId}`)
-      .then((res) => {
-        console.log("res.data", res.data);
-        setBookname(res.data.name);
-        setAuthor(res.data.author);
-        setCategory(res.data.categoryId);
-        setIsbn(res.data.isbn);
+    console.log(booksState.books, params.bookId);
+    const searchedBook = booksState.books.find(
+      (item) => item.id == params.bookId
+    );
 
-        // axios
-        //   .get("http://localhost:3004/categories")
-        //   .then((res) => {
-        //     setCategories(res.data);
-        //   })
-        //   .catch((err) => {
-        //     console.log("cateories error", err);
-        //   });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [params.bookId]);
+    if (searchedBook === undefined) {
+      navigate("/");
+      return;
+    }
+
+    setBookname(searchedBook.name);
+    setAuthor(searchedBook.author);
+    setCategory(searchedBook.categoryId);
+    setIsbn(searchedBook.isbn);
+
+    // axios
+    //   .get(`http://localhost:3004/books/${params.bookId}`)
+    //   .then((res) => {
+    //     console.log("res.data", res.data);
+    //     setBookname(res.data.name);
+    //     setAuthor(res.data.author);
+    //     setCategory(res.data.categoryId);
+    //     setIsbn(res.data.isbn);
+    //     // axios
+    //     //   .get("http://localhost:3004/categories")
+    //     //   .then((res) => {
+    //     //     setCategories(res.data);
+    //     //   })
+    //     //   .catch((err) => {
+    //     //     console.log("cateories error", err);
+    //     //   });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  }, [params.bookId, booksState]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -65,6 +82,7 @@ const EditBook = (props) => {
       .put(`http://localhost:3004/books/${params.bookId}`, updatedBook)
       .then((res) => {
         console.log(res);
+        dispatch({ type: "EDIT_BOOK", payload: updatedBook });
         setShowModal(false);
         navigate("/");
       })
@@ -73,7 +91,7 @@ const EditBook = (props) => {
       });
   };
 
-  if (categoriesState.success !== true) {
+  if (categoriesState.success !== true || booksState.success !== true) {
     return <Loading />;
   }
 

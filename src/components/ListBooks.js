@@ -3,14 +3,14 @@ import axios from "axios";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
 import Modal from "../components/Modal";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const ListBooks = (props) => {
-  const { categoriesState,booksState } = useSelector((state) => state);
+  const { categoriesState, booksState } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  console.log("categoriesState", categoriesState);
+  console.log("booksState", booksState);
 
-  console.log("categoriesState",categoriesState);
-  console.log("booksState",booksState);
-  
   // const [books, setBooks] = useState(null);
   // const [categories, setCategories] = useState(null);
   const [didUpdate, setDidUpdate] = useState(false);
@@ -35,16 +35,18 @@ const ListBooks = (props) => {
     //     //     .catch((errCat) => console.log("Categories catch blog", errCat));
     //     //
     //   })
-
     //   .catch((errBook) => console.log("Book catch blog", errBook));
   }, [didUpdate]);
 
   const deleteBook = (id) => {
     console.log(`http://localhost:3004/books/${id}`);
+
     axios
       .delete(`http://localhost:3004/books/${id}`)
       .then((res) => {
-        console.log(res);
+        console.log("delete res", res);
+        dispatch({ type: "DELETE_BOOK", paylaod: id });
+
         setDidUpdate(!didUpdate);
         setShowModal(false);
       })

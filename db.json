@@ -1,60 +1,18 @@
 {
   "books": [
     {
-      "id": 1665998431383,
-      "name": "Yaban",
-      "author": "Yakup Kadri",
-      "categoryId": "1",
-      "isbn": "1413253444"
-    },
-    {
-      "id": 1665999548535,
-      "name": "Suc ve Ceza",
-      "author": "Dostoyevski",
-      "categoryId": "4",
-      "isbn": "1111355"
-    },
-    {
-      "id": 1666084039227,
-      "name": "Yeraltından Notlar",
-      "author": "Dostoyevski",
+      "id": 1666605214456,
+      "name": "Sineklerin Tanrısı 5",
+      "author": "william Goldwin",
       "categoryId": "2",
-      "isbn": 1111223311
+      "isbn": "11234554"
     },
     {
-      "id": 1666161346089,
-      "name": "Sineklerin Tanrısı",
-      "author": "William Golding",
-      "isbn": 12345563211,
-      "categoryId": "4"
-    },
-    {
-      "id": 1666161377504,
-      "name": "Yeraltında Notlar",
-      "author": "Dostoyevski",
-      "categoryId": "2",
-      "isbn": null
-    },
-    {
-      "id": 1666260676140,
-      "name": "dssads",
-      "author": "asdsaadad",
-      "categoryId": "2",
-      "isbn": null
-    },
-    {
-      "id": 1666288961928,
-      "name": "sdsfdfs",
-      "author": "dsfdffdsfdsf",
-      "categoryId": "4",
-      "isbn": null
-    },
-    {
-      "id": 1666289106854,
-      "name": "sdafdfdsf",
-      "author": "saxsdfdsf",
-      "isbn": null,
-      "categoryId": "4"
+      "id": 1666605874588,
+      "name": "CalıKusu",
+      "author": "Reset Nuri",
+      "isbn": "111333",
+      "categoryId": "1"
     }
   ],
   "categories": [

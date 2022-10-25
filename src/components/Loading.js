@@ -12,14 +12,20 @@ const Loading = () => {
         alignItems: "center",
       }}
     >
-     <button className="btn btn-primary mx-1" type="button" >
-  <span className="spinner-grow spinner-grow-lg"  aria-hidden="true"></span>
-  <span className="visually-hidden">Loading...</span>
-</button>
-<button className="btn btn-primary" type="button" >
-  <span className="spinner-grow spinner-grow-lg"  aria-hidden="true"></span>
-  Loading...
-</button>
+      <button className="btn btn-primary mx-1" type="button">
+        <span
+          className="spinner-grow spinner-grow-lg"
+          aria-hidden="true"
+        ></span>
+        <span className="visually-hidden">Loading...</span>
+      </button>
+      <button className="btn btn-primary" type="button">
+        <span
+          className="spinner-grow spinner-grow-lg"
+          aria-hidden="true"
+        ></span>
+        Loading...
+      </button>
     </div>
   );
 };
