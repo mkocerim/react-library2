@@ -1,16 +1,32 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
-
+import Modal from "./Modal";
+import axios from "axios";
 const ListCategories = () => {
   const { categoriesState } = useSelector((state) => state);
-
+  const dispatch = useDispatch();
   console.log("categoriesState", categoriesState);
+
+  const [silinecekCategoryName, , setSilinecekCategoryName] = useState("");
+  const [silinecekCategory, setSilinecekCategory] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   useEffect(() => {
     document.title = "BookShelf - Categories";
   }, []);
+
+  const deleteCategory = (id) => {
+    axios
+      .delete(`http://localhost:3004/categories/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        dispatch({ type: "DELETE_CATEGORY", payload: id });
+      })
+
+      .catch((err) => console.log("deleteCategoryErr", err));
+  };
 
   if (categoriesState.success !== true) {
     return <Loading />;
@@ -43,9 +59,9 @@ const ListCategories = () => {
                   <div className="btn-group d-flex" role="group">
                     <button
                       onClick={() => {
-                        // setShowModal(true);
-                        // setSilinecekKitap(book.id);
-                        // setSilinecekKitapIsmi(book.name);
+                        setShowDeleteModal(true);
+                        setSilinecekCategory(category.id);
+                        setSilinecekCategoryName(category.name);
                       }}
                       type="button"
                       className="btn btn-outline-danger"
@@ -65,16 +81,16 @@ const ListCategories = () => {
           })}
         </tbody>
       </table>
-      {/* {showModal === true && (
+      {showDeleteModal === true && (
         <Modal
-          expl={`"${silinecekKitapIsmi}"are you  sure to delete ?`}
-          title={silinecekKitapIsmi}
-          onConfirm={() => deleteBook(silinecekKitap)}
+          expl={`"${silinecekCategoryName}"are you  sure to delete ?`}
+          title={silinecekCategoryName}
+          onConfirm={() => deleteCategory(silinecekCategory)}
           onCancel={() => {
-            setShowModal(false);
+            setShowDeleteModal(false);
           }}
         />
-      )} */}
+      )}
     </div>
   );
 };

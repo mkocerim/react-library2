@@ -17,26 +17,26 @@ const ListBooks = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [silinecekKitap, setSilinecekKitap] = useState(null);
   const [silinecekKitapIsmi, setSilinecekKitapIsmi] = useState("");
-  useEffect(() => {
-    // fetch("http://localhost:3004/books",{method:"get "});
-    // axios
-    //   .get("http://localhost:3004/books")
-    //   .then((resBook) => {
-    //     console.log(resBook);
-    //     setBooks(resBook.data);
-    //     //   axios
-    //     //     .get("http://localhost:3004/categories")
-    //     //     .then((resCat) => {
-    //     //       console.log(resCat);
-    //     //       setTimeout(() => {
-    //     //         setCategories(resCat.data);
-    //     //       }, 1000);
-    //     //     })
-    //     //     .catch((errCat) => console.log("Categories catch blog", errCat));
-    //     //
-    //   })
-    //   .catch((errBook) => console.log("Book catch blog", errBook));
-  }, [didUpdate]);
+  // useEffect(() => {
+  //   // fetch("http://localhost:3004/books",{method:"get "});
+  //   // axios
+  //   //   .get("http://localhost:3004/books")
+  //   //   .then((resBook) => {
+  //   //     console.log(resBook);
+  //   //     setBooks(resBook.data);
+  //   //     //   axios
+  //   //     //     .get("http://localhost:3004/categories")
+  //   //     //     .then((resCat) => {
+  //   //     //       console.log(resCat);
+  //   //     //       setTimeout(() => {
+  //   //     //         setCategories(resCat.data);
+  //   //     //       }, 1000);
+  //   //     //     })
+  //   //     //     .catch((errCat) => console.log("Categories catch blog", errCat));
+  //   //     //
+  //   //   })
+  //   //   .catch((errBook) => console.log("Book catch blog", errBook));
+  // }, [didUpdate]);
 
   const deleteBook = (id) => {
     console.log(`http://localhost:3004/books/${id}`);
@@ -79,7 +79,7 @@ const ListBooks = (props) => {
         <tbody>
           {booksState.books.map((book) => {
             const category = categoriesState.categories.find(
-              (cat) => cat.id === book.categoryId
+              (cat) => cat.id == book.categoryId
             );
 
             return (

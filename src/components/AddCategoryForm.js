@@ -33,7 +33,8 @@ const AddCategoryForm = (props) => {
     }
     const newCategory = {
       id: new Date().getTime(),
-      name: categoryName,
+      name:
+        categoryName[0].toUpperCase() + categoryName.toLowerCase().substring(1),
     };
     axios
       .post(" http://localhost:3004/categories", newCategory)
