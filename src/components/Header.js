@@ -5,7 +5,7 @@ const Header = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid">
-        <Link to = {"/"} className="navbar-brand">
+        <Link to={"/"} className="navbar-brand">
           BookShelf
         </Link>
         <button
@@ -22,11 +22,15 @@ const Header = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to={"/"}className="nav-link" >
+              <Link to={"/"} className="nav-link">
                 Books
               </Link>
             </li>
-           
+            <li className="nav-item">
+              <Link to={"/categories"} className="nav-link">
+                Categories
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

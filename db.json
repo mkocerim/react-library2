@@ -1,36 +1,51 @@
 {
   "books": [
     {
-      "id": 1666605214456,
-      "name": "Sineklerin Tanrısı 5",
-      "author": "william Goldwin",
-      "categoryId": "2",
-      "isbn": "11234554"
-    },
-    {
       "id": 1666605874588,
       "name": "CalıKusu",
       "author": "Reset Nuri",
       "isbn": "111333",
       "categoryId": "1"
+    },
+    {
+      "id": 1666685980423,
+      "name": "Insan Ne Ile Yasar ?",
+      "author": "Lev Tolstoy",
+      "isbn": "1111223445",
+      "categoryId": "2"
+    },
+    {
+      "id": 1666686009415,
+      "name": "En Uzun Gece",
+      "author": "Ahmet Altan",
+      "categoryId": "1",
+      "isbn": "111202392"
     }
   ],
   "categories": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Novel"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Story"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Essay"
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Religion"
+    },
+    {
+      "id": 5,
+      "name": "Love"
+    },
+    {
+      "id": 1666777443381,
+      "name": "Roman"
     }
   ]
 }

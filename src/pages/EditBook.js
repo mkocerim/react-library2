@@ -57,6 +57,7 @@ const EditBook = (props) => {
     //   .catch((err) => {
     //     console.log(err);
     //   });
+    document.title = `BookShelf-EditBook-${searchedBook.name}`;
   }, [params.bookId, booksState]);
 
   const handleSubmit = (event) => {

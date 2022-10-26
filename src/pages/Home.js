@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import ListBooks from "../components/ListBooks";
 
+const Home = (props) => {
+  useEffect(() => {
+    document.title = "BookShelf";
+  }, []);
 
-const Home =(props)=> {
-    return(
+  return (
     <div>
-   
-      <Header/>
-      <ListBooks/>
-   
+      <Header />
+      <ListBooks />
     </div>
-
-    )
-}
+  );
+};
 
 export default Home;

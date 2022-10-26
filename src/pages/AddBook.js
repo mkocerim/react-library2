@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import AddBookForm from "../components/AddBookForm";
 
-const AddBook=(props)=>{
-    
-    return(
+const AddBook = (props) => {
+  useEffect(() => {
+    document.title = "BookShelf-AddBook";
+  }, []);
 
-       <div>
-        <Header/>
-        <AddBookForm/>
-        </div>
-    )
-
-}
+  return (
+    <div>
+      <Header />
+      <AddBookForm />
+    </div>
+  );
+};
 
 export default AddBook;
