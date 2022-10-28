@@ -3,7 +3,7 @@ import React from "react";
 const Modal = (props) => {
   const { onCancel, onConfirm, expl, title } = props;
   return (
-    <button
+    <div
       onClick={onCancel}
       style={{
         position: "absolute",
@@ -16,6 +16,7 @@ const Modal = (props) => {
         justifyContent: "center",
         alignItems: "center",
         cursor: "default",
+        zIndex:"1"
       }}
       className="container"
     >
@@ -44,7 +45,7 @@ const Modal = (props) => {
           </button>
         </div>
       </div>
-    </button>
+    </div>
   );
 };
 

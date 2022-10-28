@@ -9,7 +9,7 @@ const ListCategories = () => {
   const dispatch = useDispatch();
   console.log("categoriesState", categoriesState);
 
-  const [silinecekCategoryName, , setSilinecekCategoryName] = useState("");
+  const [silinecekCategoryName,setSilinecekCategoryName] = useState("");
   const [silinecekCategory, setSilinecekCategory] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -83,8 +83,8 @@ const ListCategories = () => {
       </table>
       {showDeleteModal === true && (
         <Modal
-          expl={`"${silinecekCategoryName}"are you  sure to delete ?`}
-          title={silinecekCategoryName}
+          expl={`"${silinecekCategoryName}" are you  sure to delete ?`}
+          title={`"${silinecekCategoryName}"`}
           onConfirm={() => deleteCategory(silinecekCategory)}
           onCancel={() => {
             setShowDeleteModal(false);

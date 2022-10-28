@@ -20,13 +20,6 @@
       "author": "Ahmet Altan",
       "categoryId": "1",
       "isbn": "123666888"
-    },
-    {
-      "id": 1666781012624,
-      "name": "gfbhfb",
-      "author": "fbggfdfdb",
-      "isbn": "11346675",
-      "categoryId": "5"
     }
   ],
   "categories": [
@@ -47,20 +40,8 @@
       "name": "Religion"
     },
     {
-      "id": 5,
-      "name": "Love"
-    },
-    {
-      "id": 1666777443381,
+      "id": 1666893533465,
       "name": "Roman"
-    },
-    {
-      "id": 1666777631830,
-      "name": "Hikaye"
-    },
-    {
-      "id": 1666777781676,
-      "name": "şiir"
     }
   ]
 }

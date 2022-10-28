@@ -1,5 +1,4 @@
 import React from "react";
-import addCategoryForm from "../components/AddCategoryForm";
 import Header from "../components/Header";
 import AddCategoryForm from "../components/AddCategoryForm";
 
