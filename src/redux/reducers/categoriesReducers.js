@@ -1,5 +1,3 @@
-import AddCategory from "../../pages/AddCategory";
-
 const initialState = {
   start: false,
   success: false,
@@ -42,6 +40,15 @@ const categoriesReducer = (state = initialState, action) => {
       return {
         ...state,
         categories: filteredCategories,
+      };
+    case "EDIT_CATEGORY":
+      const filteredEditCategories = state.categories.filter(
+        (item) => item.id != action.payload.id
+      );
+
+      return {
+        ...state,
+        categories: [...filteredEditCategories, action.payload],
       };
 
     default:

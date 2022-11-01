@@ -1,14 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 
 const EditCategory = (props) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [category, setCategory] = useState(null);
   const [newCategoryName, setNewCategoryName] = useState("");
   const { categoryId } = useParams();
-  const[allCategories,setAllCategories]=useState(null)
+  const [allCategories, setAllCategories] = useState(null);
 
   console.log("categoryId", categoryId);
   //üstteki ve alttaki gösterimler tamamen aynidir
@@ -20,13 +23,15 @@ const EditCategory = (props) => {
       .get(`http://localhost:3004/categories/`)
       .then((res) => {
         console.log(res.data);
-        
+
         setAllCategories(res.data);
-        
-        const myCategory=res.data.find(item=>item.id==params.categoryId)
-        
-        setCategory(myCategory)
-        setNewCategoryName(res.data.name);
+
+        const myCategory = res.data.find(
+          (item) => item.id == params.categoryId
+        );
+
+        setCategory(myCategory);
+        setNewCategoryName(myCategory.name);
       })
       .catch((err) => {
         console.log("editCategoryErr", err);
@@ -39,7 +44,29 @@ const EditCategory = (props) => {
       alert("Category Name can`t be empty ");
       return;
     }
-    
+
+    const hasCategory = allCategories.find(
+      (item) => item.name.toLowerCase() === newCategoryName.toLowerCase()
+    );
+    if (hasCategory !== undefined) {
+      alert("The Category is exist");
+      return;
+    }
+
+    console.log("hasCategory", hasCategory);
+    const newCategory = {
+      ...category,
+      name: newCategoryName,
+    };
+    axios
+      .put(`http://localhost:3004/categories/${category.id}`, newCategory)
+      .then((res) => {
+        console.log(res.data);
+
+        dispatch({ type: "EDIT_CATEGORY", payload: newCategory });
+        navigate("/categories");
+      })
+      .catch((err) => console.log("editCategoryPutErr", err));
   };
 
   if (allCategories === null) {
@@ -51,17 +78,19 @@ const EditCategory = (props) => {
       <Header />
       <div className="my-5 container">
         <form onSubmit={handleEdit}>
-          <label for="exampleInputEmail1" className="form-label">
-            Category Name
-          </label>
-          <input
-            onChange={(event) => setNewCategoryName(event.target.value)}
-            value={newCategoryName}
-            type="text"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
+          <div className="mb-3">
+            <label for="exampleInputEmail1" className="form-label">
+              Category Name
+            </label>
+            <input
+              type="text"
+              value={newCategoryName}
+              onChange={(event) => setNewCategoryName(event.target.value)}
+              className="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
           <div className="d-flex justify-content-center">
             <button type="submit" className="btn btn-primary w-50 my-3">
               Submit
