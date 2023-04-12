@@ -1,54 +1,25 @@
 {
   "books": [
     {
-      "id": 1666780711605,
-      "name": "Insan Ne ile Yasar",
-      "author": "Lev Tolsoy",
-      "categoryId": "2",
-      "isbn": "111234545"
-    },
-    {
-      "id": 1666780732367,
-      "name": "En uzun gece",
-      "author": "Ahmet Altan",
-      "categoryId": "1",
-      "isbn": "123666888"
-    },
-    {
-      "id": 1681328118647,
+      "id": 1681329336687,
       "name": "Sefiller",
       "author": "Viktor Hugo",
-      "isbn": "111111123",
+      "isbn": "1111111111",
       "categoryId": "1"
-    },
-    {
-      "id": 1681328162644,
-      "name": "Sineklerin Tanrisi",
-      "author": "William Golding",
-      "isbn": "11132344",
-      "categoryId": "3"
     }
   ],
   "categories": [
     {
+      "id": 1,
+      "name": "Novel"
+    },
+    {
       "id": 2,
-      "name": "Story"
-    },
-    {
-      "id": 3,
-      "name": "Essay"
-    },
-    {
-      "id": 4,
-      "name": "Religion"
-    },
-    {
-      "id": 1667200884941,
       "name": "Poem"
     },
     {
-      "id": 1681290525250,
-      "name": "Novel"
+      "id": 3,
+      "name": "Story"
     }
   ]
 }

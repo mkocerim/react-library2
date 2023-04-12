@@ -43,7 +43,7 @@ const categoriesReducer = (state = initialState, action) => {
       };
     case "EDIT_CATEGORY":
       const filteredEditCategories = state.categories.filter(
-        (item) => item.id != action.payload.id
+        (item) => item.id !== action.payload.id
       );
 
       return {
