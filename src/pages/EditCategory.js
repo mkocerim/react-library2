@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 
 const EditCategory = (props) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [category, setCategory] = useState(null);
   const [newCategoryName, setNewCategoryName] = useState("");
   const { categoryId } = useParams();
@@ -52,17 +55,19 @@ const EditCategory = (props) => {
       <Header />
       <div className="my-5 container">
         <form onSubmit={handleEdit}>
-          <label for="exampleInputEmail1" className="form-label">
-            Category Name
-          </label>
-          <input
-            onChange={(event) => setNewCategoryName(event.target.value)}
-            value={newCategoryName}
-            type="text"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
+          <div className="mb-3">
+            <label for="exampleInputEmail1" className="form-label">
+              Category Name
+            </label>
+            <input
+              type="text"
+              value={newCategoryName}
+              onChange={(event) => setNewCategoryName(event.target.value)}
+              className="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
           <div className="d-flex justify-content-center">
             <button type="submit" className="btn btn-primary w-50 my-3">
               Submit

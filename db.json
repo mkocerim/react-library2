@@ -31,10 +31,6 @@
   ],
   "categories": [
     {
-      "id": 1,
-      "name": "Novel"
-    },
-    {
       "id": 2,
       "name": "Story"
     },
@@ -47,8 +43,12 @@
       "name": "Religion"
     },
     {
-      "id": 1666893533465,
-      "name": "Roman"
+      "id": 1667200884941,
+      "name": "Poem"
+    },
+    {
+      "id": 1681290525250,
+      "name": "Novel"
     }
   ]
 }

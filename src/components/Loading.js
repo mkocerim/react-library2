@@ -3,7 +3,7 @@ import React from "react";
 const Loading = () => {
   return (
     <div
-      className="container d-flex justify-content alings-item-center"
+      className="container d-flex justify-content align-items-center"
       style={{
         widows: "100vw",
         height: "100vh",
