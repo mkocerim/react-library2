@@ -6,6 +6,8 @@ import Modal from "../components/Modal";
 import { useSelector, useDispatch } from "react-redux";
 
 const ListBooks = (props) => {
+  // const [books, setBooks] = useState(null);
+  // const [categories, setCategories] = useState(null);
   const { categoriesState, booksState } = useSelector((state) => state);
   const dispatch = useDispatch();
   console.log("categoriesState", categoriesState);

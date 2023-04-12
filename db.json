@@ -5,14 +5,7 @@
       "name": "İnsan Ne ile Yaşar?",
       "author": "Lev Tolsoy",
       "categoryId": "2",
-      "isbn": "111234545"
-    },
-    {
-      "id": 1667198438836,
-      "name": "Sefiller",
-      "author": "Victor Hugo",
-      "isbn": 11123331,
-      "categoryId": "4"
+      "isbn": "1112345455"
     },
     {
       "id": 1667200852227,
@@ -34,6 +27,13 @@
       "author": "Şeyh Galip",
       "isbn": 111333555,
       "categoryId": "4"
+    },
+    {
+      "id": 1681290451172,
+      "name": "Sefiller",
+      "author": "Victor Hugo",
+      "isbn": 1111119,
+      "categoryId": "2"
     }
   ],
   "categories": [
@@ -52,6 +52,10 @@
     {
       "id": 1667200884941,
       "name": "Poem"
+    },
+    {
+      "id": 1681290525250,
+      "name": "Novel"
     }
   ]
 }
