@@ -18,24 +18,23 @@ const ListBooks = (props) => {
   const [silinecekKitap, setSilinecekKitap] = useState(null);
   const [silinecekKitapIsmi, setSilinecekKitapIsmi] = useState("");
   // useEffect(() => {
-  //   // fetch("http://localhost:3004/books",{method:"get "});
-  //   // axios
-  //   //   .get("http://localhost:3004/books")
-  //   //   .then((resBook) => {
-  //   //     console.log(resBook);
-  //   //     setBooks(resBook.data);
-  //   //     //   axios
-  //   //     //     .get("http://localhost:3004/categories")
-  //   //     //     .then((resCat) => {
-  //   //     //       console.log(resCat);
-  //   //     //       setTimeout(() => {
-  //   //     //         setCategories(resCat.data);
-  //   //     //       }, 1000);
-  //   //     //     })
-  //   //     //     .catch((errCat) => console.log("Categories catch blog", errCat));
-  //   //     //
-  //   //   })
-  //   //   .catch((errBook) => console.log("Book catch blog", errBook));
+  //   fetch("http://localhost:3004/books", { method: "get " });
+  //   axios
+  //     .get("http://localhost:3004/books")
+  //     .then((resBook) => {
+  //       console.log(resBook);
+  //       setBooks(resBook.data);
+  //       axios
+  //         .get("http://localhost:3004/categories")
+  //         .then((resCat) => {
+  //           console.log(resCat);
+  //           setTimeout(() => {
+  //             setCategories(resCat.data);
+  //           }, 1000);
+  //         })
+  //         .catch((errCat) => console.log("Categories catch blog", errCat));
+  //     })
+  //     .catch((errBook) => console.log("Book catch blog", errBook));
   // }, [didUpdate]);
 
   const deleteBook = (id) => {
@@ -45,7 +44,7 @@ const ListBooks = (props) => {
       .delete(`http://localhost:3004/books/${id}`)
       .then((res) => {
         console.log("delete res", res);
-        dispatch({ type: "DELETE_BOOK", paylaod: id });
+        dispatch({ type: "DELETE_BOOK", payload: id });
 
         setDidUpdate(!didUpdate);
         setShowModal(false);

@@ -8,7 +8,7 @@ const EditCategory = (props) => {
   const [category, setCategory] = useState(null);
   const [newCategoryName, setNewCategoryName] = useState("");
   const { categoryId } = useParams();
-  const[allCategories,setAllCategories]=useState(null)
+  const [allCategories, setAllCategories] = useState(null);
 
   console.log("categoryId", categoryId);
   //üstteki ve alttaki gösterimler tamamen aynidir
@@ -20,12 +20,14 @@ const EditCategory = (props) => {
       .get(`http://localhost:3004/categories/`)
       .then((res) => {
         console.log(res.data);
-        
+
         setAllCategories(res.data);
-        
-        const myCategory=res.data.find(item=>item.id==params.categoryId)
-        
-        setCategory(myCategory)
+
+        const myCategory = res.data.find(
+          (item) => item.id == params.categoryId
+        );
+
+        setCategory(myCategory);
         setNewCategoryName(res.data.name);
       })
       .catch((err) => {
@@ -39,7 +41,6 @@ const EditCategory = (props) => {
       alert("Category Name can`t be empty ");
       return;
     }
-    
   };
 
   if (allCategories === null) {
