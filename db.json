@@ -6,6 +6,27 @@
       "author": "Viktor Hugo",
       "isbn": "1111111111",
       "categoryId": "1"
+    },
+    {
+      "id": 1681330113041,
+      "name": "adfsdffd",
+      "author": "dsddsdsd",
+      "isbn": "",
+      "categoryId": "1"
+    },
+    {
+      "id": 1681330123028,
+      "name": "sdsddasd",
+      "author": "sd",
+      "isbn": "",
+      "categoryId": "2"
+    },
+    {
+      "id": 1681330142268,
+      "name": "ASa",
+      "author": "ASS",
+      "isbn": "",
+      "categoryId": "1681330130890"
     }
   ],
   "categories": [
@@ -20,6 +41,14 @@
     {
       "id": 3,
       "name": "Story"
+    },
+    {
+      "id": 1681330061897,
+      "name": "Essay"
+    },
+    {
+      "id": 1681330130890,
+      "name": "Dsddasdd"
     }
   ]
 }
