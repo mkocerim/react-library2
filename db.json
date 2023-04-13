@@ -1,32 +1,32 @@
 {
   "books": [
     {
-      "id": 1681329336687,
+      "id": 1681369480656,
+      "name": "Sineklerin Tansrısı",
+      "author": "William Golding",
+      "categoryId": "1681330061897",
+      "isbn": "1111111117"
+    },
+    {
+      "id": 1681369518503,
+      "name": "Calısıkusu",
+      "author": "Reşat Gültekin",
+      "categoryId": "3",
+      "isbn": "1111111115"
+    },
+    {
+      "id": 1681369610678,
+      "name": "Vatan Yahut Silistre",
+      "author": "Namık Kemal",
+      "categoryId": "1681369572146",
+      "isbn": "11111117"
+    },
+    {
+      "id": 1681386967827,
       "name": "Sefiller",
       "author": "Viktor Hugo",
-      "isbn": "1111111111",
+      "isbn": "11111119",
       "categoryId": "1"
-    },
-    {
-      "id": 1681330113041,
-      "name": "adfsdffd",
-      "author": "dsddsdsd",
-      "isbn": "",
-      "categoryId": "1"
-    },
-    {
-      "id": 1681330123028,
-      "name": "sdsddasd",
-      "author": "sd",
-      "isbn": "",
-      "categoryId": "2"
-    },
-    {
-      "id": 1681330142268,
-      "name": "ASa",
-      "author": "ASS",
-      "isbn": "",
-      "categoryId": "1681330130890"
     }
   ],
   "categories": [
@@ -47,8 +47,8 @@
       "name": "Essay"
     },
     {
-      "id": 1681330130890,
-      "name": "Dsddasdd"
+      "id": 1681369572146,
+      "name": "Theater"
     }
   ]
 }

@@ -17,8 +17,8 @@ const ListBooks = (props) => {
   // const [categories, setCategories] = useState(null);
   const [didUpdate, setDidUpdate] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [silinecekKitap, setSilinecekKitap] = useState(null);
-  const [silinecekKitapIsmi, setSilinecekKitapIsmi] = useState("");
+  const [bookWillDeleted, setBookWillDeleted] = useState(null);
+  const [booksNameWillDeleted, setBooksNameWillDeleted] = useState("");
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -119,8 +119,8 @@ const ListBooks = (props) => {
                     <button
                       onClick={() => {
                         setShowModal(true);
-                        setSilinecekKitap(book.id);
-                        setSilinecekKitapIsmi(book.name);
+                        setBookWillDeleted(book.id);
+                        setBooksNameWillDeleted(book.name);
                       }}
                       type="button"
                       className="btn btn-outline-danger btn-sm "
@@ -142,9 +142,9 @@ const ListBooks = (props) => {
       </table>
       {showModal === true && (
         <Modal
-          expl={`"${silinecekKitapIsmi}"are you  sure to delete ?`}
-          title={silinecekKitapIsmi}
-          onConfirm={() => deleteBook(silinecekKitap)}
+          explaination={`Sure to delete "${booksNameWillDeleted}" named book ?`}
+          title={booksNameWillDeleted}
+          onConfirm={() => deleteBook(bookWillDeleted)}
           onCancel={() => {
             setShowModal(false);
           }}

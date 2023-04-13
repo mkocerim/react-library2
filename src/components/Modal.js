@@ -1,7 +1,7 @@
 import React from "react";
 
 const Modal = (props) => {
-  const { onCancel, onConfirm, expl, title } = props;
+  const { onCancel, onConfirm, explaination, title } = props;
   return (
     <div
       onClick={onCancel}
@@ -16,7 +16,7 @@ const Modal = (props) => {
         justifyContent: "center",
         alignItems: "center",
         cursor: "default",
-        zIndex:"1"
+        zIndex: "1",
       }}
       className="container"
     >
@@ -29,7 +29,7 @@ const Modal = (props) => {
         }}
       >
         <h1 className="text-center">{title}</h1>
-        <p className="text-center">{expl}</p>
+        <p className="text-center">{explaination}</p>
         <div className="d-flex justify-content-center">
           <button
             onClick={onCancel}
