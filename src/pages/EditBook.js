@@ -161,7 +161,7 @@ const EditBook = (props) => {
       {showModal === true && (
         <Modal
           title={`"${bookname}" named book will update`}
-          expl="Confirm to save"
+          explanation="Confirm to save"
           onCancel={() => setShowModal(false)}
           onConfirm={() => editBook()}
         />

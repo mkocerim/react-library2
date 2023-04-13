@@ -1,7 +1,7 @@
 import React from "react";
 
 const Modal = (props) => {
-  const { onCancel, onConfirm, explaination, title } = props;
+  const { onCancel, onConfirm, explanation, title } = props;
   return (
     <div
       onClick={onCancel}
@@ -9,9 +9,9 @@ const Modal = (props) => {
         position: "absolute",
         top: 0,
         left: 0,
-        width: "100vw",
+        width: "%100",
         height: "100vh",
-        backgroundColor: "rgba(0,0,0,0.3)",
+        backgroundColor: "rgba(0,0,0,0.2)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -29,7 +29,7 @@ const Modal = (props) => {
         }}
       >
         <h1 className="text-center">{title}</h1>
-        <p className="text-center">{explaination}</p>
+        <p className="text-center">{explanation}</p>
         <div className="d-flex justify-content-center">
           <button
             onClick={onCancel}

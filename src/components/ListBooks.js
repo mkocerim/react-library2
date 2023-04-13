@@ -142,7 +142,7 @@ const ListBooks = (props) => {
       </table>
       {showModal === true && (
         <Modal
-          explaination={`Sure to delete "${booksNameWillDeleted}" named book ?`}
+          explanation={`Sure to delete "${booksNameWillDeleted}" named book ?`}
           title={booksNameWillDeleted}
           onConfirm={() => deleteBook(bookWillDeleted)}
           onCancel={() => {

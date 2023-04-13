@@ -2,14 +2,14 @@
   "books": [
     {
       "id": 1681369480656,
-      "name": "Sineklerin Tansrısı",
+      "name": "Sineklerin Tanrısı",
       "author": "William Golding",
       "categoryId": "1681330061897",
       "isbn": "1111111117"
     },
     {
       "id": 1681369518503,
-      "name": "Calısıkusu",
+      "name": "Calıkusu",
       "author": "Reşat Gültekin",
       "categoryId": "3",
       "isbn": "1111111115"
@@ -27,6 +27,13 @@
       "author": "Viktor Hugo",
       "isbn": "11111119",
       "categoryId": "1"
+    },
+    {
+      "id": 1681408207407,
+      "name": "Fable ",
+      "author": "Jean de La Fontaine",
+      "categoryId": "1681405394640",
+      "isbn": "11111111123"
     }
   ],
   "categories": [
@@ -49,6 +56,18 @@
     {
       "id": 1681369572146,
       "name": "Theater"
+    },
+    {
+      "id": 1681405373530,
+      "name": "History"
+    },
+    {
+      "id": 1681405394640,
+      "name": "Fable"
+    },
+    {
+      "id": 1681405479851,
+      "name": "Critique"
     }
   ]
 }
