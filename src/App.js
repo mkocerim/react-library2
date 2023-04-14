@@ -26,7 +26,7 @@ function App() {
       .catch((err) => {
         dispatch({
           type: "FETCH_CATEGORIES_FAIL",
-          payload: "There is an error when cateories pulled ",
+          payload: "There is an error when categories pulled ",
         });
       });
     //books
