@@ -27,7 +27,7 @@ const EditCategory = (props) => {
         setAllCategories(res.data);
 
         const myCategory = res.data.find(
-          (item) => item.id == params.categoryId
+          (item) => item.id === params.categoryId
         );
 
         setCategory(myCategory);

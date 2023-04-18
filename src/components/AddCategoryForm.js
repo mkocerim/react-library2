@@ -10,7 +10,7 @@ const AddCategoryForm = (props) => {
   const { categoriesState } = useSelector((state) => state);
 
   useEffect(() => {
-    document.title = "BookShelf-Add Category";
+    document.title = "BookShelf - Add Category";
   }, []);
 
   console.log("categoriesState", categoriesState);

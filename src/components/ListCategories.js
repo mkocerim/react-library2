@@ -77,6 +77,7 @@ const ListCategories = () => {
                     >
                       Delete
                     </button>
+
                     <Link
                       to={`/edit-category/${category.id}`}
                       className="btn btn-outline-secondary mx-1 "
