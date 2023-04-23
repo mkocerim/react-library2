@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
+import { type } from "@testing-library/user-event/dist/type";
 
 const EditCategory = (props) => {
   const navigate = useNavigate();
@@ -16,26 +17,25 @@ const EditCategory = (props) => {
   console.log("categoryId", categoryId);
   //üstteki ve alttaki gösterimler tamamen aynidir
   const params = useParams();
+  //const {categoryId} =useParamas()
   console.log(params.categoryId);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3004/categories/`)
+      .get(`http://localhost:3004/categories`)
       .then((res) => {
         console.log(res.data);
 
         setAllCategories(res.data);
 
         const myCategory = res.data.find(
-          (item) => item.id === params.categoryId
+          (item) => item.id == params.categoryId
         );
 
         setCategory(myCategory);
-        setNewCategoryName(res.data.name);
+        setNewCategoryName(myCategory.name);
       })
-      .catch((err) => {
-        console.log("editCategoryErr", err);
-      });
+      .catch((err) => console.log("editCategoryGetErr", err));
   }, []);
 
   const handleEdit = (event) => {
@@ -44,6 +44,25 @@ const EditCategory = (props) => {
       alert("Category Name can`t be empty ");
       return;
     }
+    const hasCategory = allCategories.find(
+      (item) => item.name.toLowerCase() === newCategoryName.toLowerCase()
+    );
+    if (hasCategory !== undefined) {
+      alert("The Category Name is already exists");
+      return;
+    }
+    const newCategory = {
+      ...category,
+      name: newCategoryName,
+    };
+    axios
+      .put(`http://localhost:3004/categories/${category.id}`, newCategory)
+      .then((res) => {
+        console.log(res);
+        dispatch({ type: "EDIT_CATEGORY", payload: newCategory });
+        navigate("/categories");
+      })
+      .catch((err) => console.log("editCategoryPutErr", err));
   };
 
   if (allCategories === null) {

@@ -9,8 +9,8 @@ const ListCategories = () => {
   const dispatch = useDispatch();
   console.log("booksState", booksState);
 
-  const [silinecekCategoryName, setSilinecekCategoryName] = useState("");
-  const [silinecekCategory, setSilinecekCategory] = useState(null);
+  const [willDeletedCategoryName, setWillDeletedCategoryName] = useState("");
+  const [willDeletedCategory, setWillDeletedCategory] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   useEffect(() => {
@@ -69,8 +69,8 @@ const ListCategories = () => {
                     <button
                       onClick={() => {
                         setShowDeleteModal(true);
-                        setSilinecekCategory(category.id);
-                        setSilinecekCategoryName(category.name);
+                        setWillDeletedCategory(category.id);
+                        setWillDeletedCategoryName(category.name);
                       }}
                       type="button"
                       className="btn btn-outline-danger"
@@ -93,9 +93,9 @@ const ListCategories = () => {
       </table>
       {showDeleteModal === true && (
         <Modal
-          expl={`"${silinecekCategoryName}" are you  sure to delete ?`}
-          title={`"${silinecekCategoryName}"`}
-          onConfirm={() => deleteCategory(silinecekCategory)}
+          expl={`"${willDeletedCategoryName}" are you  sure to delete ?`}
+          title={`"${willDeletedCategoryName}"`}
+          onConfirm={() => deleteCategory(willDeletedCategory)}
           onCancel={() => {
             setShowDeleteModal(false);
           }}
